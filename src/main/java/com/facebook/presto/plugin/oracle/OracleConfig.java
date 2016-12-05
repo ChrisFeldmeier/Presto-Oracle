@@ -28,6 +28,7 @@ public class OracleConfig {
 	private String user;
 	private String password;
 	private String url;
+	private String hostentry;
 
 	/**
 	 * @return the user
@@ -69,6 +70,13 @@ public class OracleConfig {
 	public String getUrl() {
 		return url;
 	}
+	
+	/**
+	 * @return the host entry
+	 */
+	public String getLocalHostEntry() {
+		return hostentry;
+	}	
 
 	/**
 	 * @param url
@@ -77,6 +85,7 @@ public class OracleConfig {
 	@Config("oracle.password")
 	public OracleConfig setUrl(String url) {
 		this.url = url;
+		this.hostentry = "localhost";
 		return this;
 	}
 
