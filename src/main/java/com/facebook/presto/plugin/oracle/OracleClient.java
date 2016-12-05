@@ -106,6 +106,7 @@ public class OracleClient extends BaseJdbcClient {
 			}
 			try (ResultSet resultSet = getTables(connection, jdbcSchemaName,
 					jdbcTableName)) {
+				// insert lamp expression
 				List<JdbcTableHandle> tableHandles = new ArrayList<>();
 				while (resultSet.next()) {
 					tableHandles.add(new JdbcTableHandle(connectorId,
@@ -143,8 +144,7 @@ public class OracleClient extends BaseJdbcClient {
 				boolean found = false;
 				while (resultSet.next()) {
 					found = true;
-					Type columnType = toPrestoType(resultSet
-							.getInt("DATA_TYPE"));
+					Type columnType = toPrestoType(resultSet.getInt("DATA_TYPE"));
 					// skip unsupported column types
 					if (columnType != null) {
 						String columnName = resultSet.getString("COLUMN_NAME");
